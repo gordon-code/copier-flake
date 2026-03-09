@@ -84,14 +84,14 @@
 
           gitDirExtension = pkgs.python3Packages.buildPythonPackage rec {
             pname = "jinja2-git-dir";
-            version = "0.4.1";
+            version = "0.5.0";
             pyproject = true;
             disabled = pkgs.python3Packages.pythonOlder "3.9";
             src = pkgs.fetchFromGitHub {
               owner = "gordon-code";
               repo = "jinja2-git-dir";
               tag = "v${version}";
-              hash = "sha256-6FdETFmz/Y2To+oTonsDRoc0ATo9MHQ0sZf06iDTYjA=";
+              hash = "sha256-YYdwZ0Hypd2fihpsQ6gPht6vHqcpeYP41TahC9jgxzQ=";
             };
             build-system = [
               pkgs.python3Packages.hatchling
