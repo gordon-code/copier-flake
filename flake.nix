@@ -19,15 +19,9 @@
         f:
         nixpkgs.lib.genAttrs supportedSystems (
           system:
-          f rec {
+          f {
             inherit system;
             pkgs = nixpkgs.legacyPackages.${system};
-            devPkgs = [
-              pkgs.cocogitto
-              pkgs.git
-              pkgs.gnugrep
-              pkgs.prek
-            ];
           }
         );
     in
@@ -36,21 +30,21 @@
         {
           pkgs,
           system,
-          devPkgs,
           ...
         }:
         {
           default = pkgs.mkShell {
             packages = [
               packages.${system}.copier
-            ] ++ devPkgs;
+              pkgs.git
+            ];
           };
         }
       );
+
       packages = forEachSupportedSystem (
         {
           pkgs,
-          devPkgs,
           system,
           ...
         }:
@@ -78,7 +72,7 @@
                   pkgs.python3.pkgs.hatch-vcs
                 ];
               }))
-            ] ++ devPkgs;
+            ];
             text = ''copier "$@"'';
           };
 
