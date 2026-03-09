@@ -55,7 +55,7 @@
               # Override upstream to use latest version and include additional extensions
               # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/co/copier/package.nix
               (pkgs.copier.overridePythonAttrs (old: rec {
-                version = "9.7.1";
+                version = "9.13.1";
                 src = pkgs.fetchFromGitHub {
                   owner = "copier-org";
                   repo = "copier";
@@ -64,7 +64,7 @@
                   postFetch = ''
                     rm $out/tests/demo/doc/ma*ana.txt
                   '';
-                  hash = "sha256-F51hPzHIvTpL2Z1KE1VS0K+QKxHGyodRUGRHNDRadkM=";
+                  hash = "sha256-2ejDj9qAdziAaXmgl6eJGEznhceYYKnFBcHznuHZrGQ=";
                 };
                 dependencies = old.dependencies ++ [
                   packages.${system}.gitDirExtension
