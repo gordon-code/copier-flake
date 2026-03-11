@@ -52,6 +52,7 @@
           copier = pkgs.writeShellApplication {
             name = "copier";
             runtimeInputs = [
+              pkgs.git
               # Override upstream to use latest version and include additional extensions
               # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/co/copier/package.nix
               (pkgs.copier.overridePythonAttrs (old: rec {
